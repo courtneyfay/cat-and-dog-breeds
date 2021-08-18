@@ -14,6 +14,7 @@ const Background = styled.div`
 
 function App() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | undefined>();
   const [petType, setPetType] = useState<StringTypeOfPet | undefined>();
   const [breedData, setBreedData] = useState<Breed[] | undefined>();
 
@@ -24,12 +25,14 @@ function App() {
         setBreedData={setBreedData}
         setPetType={setPetType}
         setIsLoading={setIsLoading}
+        setError={setError}
       />
       {petType && (
         <BreedSearch
           breedData={breedData}
           petType={petType}
           isLoading={isLoading}
+          error={error}
         />
       )}
     </Background>

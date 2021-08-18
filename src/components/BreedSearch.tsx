@@ -9,18 +9,24 @@ interface Props {
     breedData?: Breed[]
     petType: StringTypeOfPet
     isLoading: boolean
+    error?: string
  }
 
 const BreedSearch = ({
         breedData,
         petType,
         isLoading,
+        error,
     }: Props) => {
     return (
         <div>
             <Question>Your pet's breed is?</Question>
             <SectionWrapper>
-                <BreedDropdown breedData={breedData} isLoading={isLoading} />
+                <BreedDropdown
+                    breedData={breedData}
+                    isLoading={isLoading}
+                    error={error}
+                />
             </SectionWrapper>
             <PetImage petType={petType} />
         </div>

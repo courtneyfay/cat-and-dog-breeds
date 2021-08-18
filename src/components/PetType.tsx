@@ -12,12 +12,6 @@ const ButtonWrapper = styled.div`
     justify-content: space-between;
 `;
 
-interface Props {
-    setBreedData: (arg0: Breed[] | undefined) => void;
-    setPetType: (arg0: StringTypeOfPet) => void;
-    setIsLoading: (arg0: boolean) => void;
-}
-
 const filterByType = (results: Breed[], type: TypeOfPet) => {
     return results?.reduce<Breed[]>(
         (accumulator: any, result: any) => {
@@ -34,10 +28,18 @@ const filterByType = (results: Breed[], type: TypeOfPet) => {
     );
 }
 
+interface Props {
+    setBreedData: (arg0: Breed[] | undefined) => void;
+    setPetType: (arg0: StringTypeOfPet) => void;
+    setIsLoading: (arg0: boolean) => void;
+    setError: (arg0: string) => void;
+}
+
 const PetType = ({
         setBreedData,
         setPetType,
         setIsLoading,
+        setError,
     } : Props) => {
 
     const handleClick = async (type: TypeOfPet) => {
@@ -50,7 +52,10 @@ const PetType = ({
             const results = await response.json();
             const filteredResults = filterByType(results, type);
             setBreedData(filteredResults);
+        } else {
+            setError(response.statusText);
         }
+
         setIsLoading(false);
     }
 
