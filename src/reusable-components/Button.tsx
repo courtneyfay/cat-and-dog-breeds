@@ -14,6 +14,7 @@ const Button = styled.button`
     letter-spacing: 0.2em;
     font-weight: 700;
     margin: 0 40px;
+    cursor: pointer;
 `
 
 export default Button;
