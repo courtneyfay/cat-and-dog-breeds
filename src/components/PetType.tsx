@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import Question from '../reusable-components/Question';
 import Button from '../reusable-components/Button';
 import SectionWrapper from '../reusable-components/SectionWrapper';
-import { Breed, TypeOfPet } from '../types/Breed';
+import { Breed } from '../types/Breed';
+import { TypeOfPet, StringTypeOfPet } from '../types/TypeOfPet';
 
 const ButtonWrapper = styled.div`
     display: flex;
@@ -13,7 +14,7 @@ const ButtonWrapper = styled.div`
 
 interface Props {
     setBreedData: (arg0: Breed[] | undefined) => void;
-    setPetType: (arg0: 'cat' | 'dog') => void;
+    setPetType: (arg0: StringTypeOfPet) => void;
 }
 
 const filterByType = (results: Breed[], type: TypeOfPet) => {

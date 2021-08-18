@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Dog from '../images/dog_jumping.svg';
+import { StringTypeOfPet } from '../types/TypeOfPet';
 
 const ImageWrapper = styled.div`
     margin-top: 80px;
@@ -8,7 +9,7 @@ const ImageWrapper = styled.div`
 `;
 
 interface Props {
-    petType: 'cat' | 'dog'
+    petType: StringTypeOfPet
 }
 
 const PetImage = ({ petType }: Props) => {

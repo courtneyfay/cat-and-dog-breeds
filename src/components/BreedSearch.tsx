@@ -1,4 +1,5 @@
 import { Breed } from '../types/Breed';
+import { StringTypeOfPet } from '../types/TypeOfPet';
 import Question from '../reusable-components/Question';
 import SectionWrapper from '../reusable-components/SectionWrapper';
 import PetImage from './PetImage';
@@ -6,7 +7,7 @@ import BreedDropdown from './BreedDropdown';
 
 interface Props {
     breedData?: Breed[]
-    petType: 'cat' | 'dog'
+    petType: StringTypeOfPet
  }
 
 const BreedSearch = ({ breedData, petType }: Props) => {

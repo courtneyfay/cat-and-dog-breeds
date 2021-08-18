@@ -4,6 +4,7 @@ import PetType from './components/PetType';
 import BreedSearch from './components/BreedSearch';
 import styled from 'styled-components';
 import { Breed } from './types/Breed';
+import { StringTypeOfPet } from './types/TypeOfPet';
 
 const Background = styled.div`
   background: #064574;
@@ -12,7 +13,7 @@ const Background = styled.div`
 `;
 
 function App() {
-  const [petType, setPetType] = useState<'cat' | 'dog' | undefined>();
+  const [petType, setPetType] = useState<StringTypeOfPet | undefined>();
   const [breedData, setBreedData] = useState<Breed[] | undefined>();
 
   return (

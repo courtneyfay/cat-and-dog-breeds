@@ -1,4 +1,4 @@
-type TypeOfPet = 0 | 1
+import { TypeOfPet } from './TypeOfPet';
 
 type Breed = {
     id: number
@@ -9,5 +9,4 @@ type Breed = {
 
 export type {
     Breed,
-    TypeOfPet,
 }
