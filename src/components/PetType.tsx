@@ -15,6 +15,7 @@ const ButtonWrapper = styled.div`
 interface Props {
     setBreedData: (arg0: Breed[] | undefined) => void;
     setPetType: (arg0: StringTypeOfPet) => void;
+    setIsLoading: (arg0: boolean) => void;
 }
 
 const filterByType = (results: Breed[], type: TypeOfPet) => {
@@ -33,11 +34,16 @@ const filterByType = (results: Breed[], type: TypeOfPet) => {
     );
 }
 
-const PetType = ({ setBreedData, setPetType } : Props) => {
+const PetType = ({
+        setBreedData,
+        setPetType,
+        setIsLoading,
+    } : Props) => {
 
     const handleClick = async (type: TypeOfPet) => {
-        const typeInWords = type === 1 ? 'cat' : 'dog';
-        setPetType(typeInWords);
+        setIsLoading(true);
+
+        setPetType(type === 1 ? 'cat' : 'dog');
         const response = await fetch('api/1.0/breeds');
 
         if (response.status === 200) {
@@ -45,6 +51,7 @@ const PetType = ({ setBreedData, setPetType } : Props) => {
             const filteredResults = filterByType(results, type);
             setBreedData(filteredResults);
         }
+        setIsLoading(false);
     }
 
     return (

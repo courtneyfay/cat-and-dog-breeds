@@ -3,9 +3,10 @@ import Select from 'react-select';
 
 interface Props {
     breedData?: Breed[]
+    isLoading: boolean
 }
 
-const BreedDropdown = ({ breedData }: Props) => {
+const BreedDropdown = ({ breedData, isLoading }: Props) => {
     const breedOptions = breedData?.map(breed => {
         return {
             value: breed.id,
@@ -15,6 +16,7 @@ const BreedDropdown = ({ breedData }: Props) => {
 
     return (
         <Select
+            isLoading={isLoading}
             placeholder='Start typing to find'
             isClearable={true}
             isSearchable={true}

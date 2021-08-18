@@ -8,14 +8,19 @@ import BreedDropdown from './BreedDropdown';
 interface Props {
     breedData?: Breed[]
     petType: StringTypeOfPet
+    isLoading: boolean
  }
 
-const BreedSearch = ({ breedData, petType }: Props) => {
+const BreedSearch = ({
+        breedData,
+        petType,
+        isLoading,
+    }: Props) => {
     return (
         <div>
             <Question>Your pet's breed is?</Question>
             <SectionWrapper>
-                <BreedDropdown breedData={breedData} />
+                <BreedDropdown breedData={breedData} isLoading={isLoading} />
             </SectionWrapper>
             <PetImage petType={petType} />
         </div>
