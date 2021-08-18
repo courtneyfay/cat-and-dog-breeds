@@ -12,14 +12,21 @@ const Background = styled.div`
 `;
 
 function App() {
+  const [petType, setPetType] = useState<'cat' | 'dog' | undefined>();
   const [breedData, setBreedData] = useState<Breed[] | undefined>();
 
   return (
     <Background>
       <Header />
-      <PetType setBreedData={setBreedData} />
-      {breedData && (
-        <BreedSearch breedData={breedData} />
+      <PetType
+        setBreedData={setBreedData}
+          setPetType={setPetType}
+        />
+      {petType && (
+        <BreedSearch
+          breedData={breedData}
+          petType={petType}
+        />
       )}
     </Background>
   );

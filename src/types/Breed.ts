@@ -1,10 +1,13 @@
+type TypeOfPet = 0 | 1
+
 type Breed = {
     id: number
     name: string
     mixed: boolean
-    petType: 0 | 1
+    petType: TypeOfPet
 }
 
 export type {
     Breed,
+    TypeOfPet,
 }

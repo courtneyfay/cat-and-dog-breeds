@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Question from '../reusable-components/Question';
 import Button from '../reusable-components/Button';
-import { Breed } from '../types/Breed';
+import { Breed, TypeOfPet } from '../types/Breed';
 
 const ButtonWrapper = styled.div`
     display: flex;
@@ -12,11 +12,10 @@ const ButtonWrapper = styled.div`
 
 interface Props {
     setBreedData: (arg0: Breed[] | undefined) => void;
+    setPetType: (arg0: 'cat' | 'dog') => void;
 }
 
-type DogOrCat = 0 | 1;
-
-const filterByType = (results: Breed[], type: DogOrCat) => {
+const filterByType = (results: Breed[], type: TypeOfPet) => {
     return results?.reduce<Breed[]>(
         (accumulator: any, result: any) => {
             //filter by dog or cat type, 0 = dog, 1 = cat
@@ -32,9 +31,11 @@ const filterByType = (results: Breed[], type: DogOrCat) => {
     );
 }
 
-const PetType = ({ setBreedData } : Props) => {
+const PetType = ({ setBreedData, setPetType } : Props) => {
 
-    const handleClick = async (type: DogOrCat) => {
+    const handleClick = async (type: TypeOfPet) => {
+        const typeInWords = type === 1 ? 'cat' : 'dog';
+        setPetType(typeInWords);
         const response = await fetch('api/1.0/breeds');
 
         if (response.status === 200) {
