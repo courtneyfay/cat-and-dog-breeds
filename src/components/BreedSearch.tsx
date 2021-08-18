@@ -1,6 +1,8 @@
 import { Breed } from '../types/Breed';
 import Question from '../reusable-components/Question';
+import SectionWrapper from '../reusable-components/SectionWrapper';
 import PetImage from './PetImage';
+import BreedDropdown from './BreedDropdown';
 
 interface Props {
     breedData?: Breed[]
@@ -11,13 +13,9 @@ const BreedSearch = ({ breedData, petType }: Props) => {
     return (
         <div>
             <Question>Your pet's breed is?</Question>
-            <select>
-            {breedData && breedData.length > 0 && breedData?.map((breed: Breed) => {
-                return (
-                    <option key={breed.id}>Breed name: {breed.name}</option>
-                ) 
-            })}
-            </select>
+            <SectionWrapper>
+                <BreedDropdown breedData={breedData} />
+            </SectionWrapper>
             <PetImage petType={petType} />
         </div>
         

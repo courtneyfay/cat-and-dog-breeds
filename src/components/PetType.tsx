@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Question from '../reusable-components/Question';
 import Button from '../reusable-components/Button';
+import SectionWrapper from '../reusable-components/SectionWrapper';
 import { Breed, TypeOfPet } from '../types/Breed';
 
 const ButtonWrapper = styled.div`
@@ -48,14 +49,16 @@ const PetType = ({ setBreedData, setPetType } : Props) => {
     return (
         <div>
             <Question>Your pet is a?</Question>
-            <ButtonWrapper>
-                <Button onClick={() => handleClick(0)}>
-                    Dog
-                </Button>
-                <Button onClick={() => handleClick(1)}>
-                    Cat
-                </Button>
-            </ButtonWrapper>
+            <SectionWrapper>
+                <ButtonWrapper>
+                    <Button onClick={() => handleClick(0)}>
+                        Dog
+                    </Button>
+                    <Button onClick={() => handleClick(1)}>
+                        Cat
+                    </Button>
+                </ButtonWrapper>
+            </SectionWrapper>
         </div>
     )
 }
