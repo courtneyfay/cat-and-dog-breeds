@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Question from '../reusable-components/Question';
-import Button from '../reusable-components/Button';
+import { PrimaryButton } from '../reusable-components/Button';
 import SectionWrapper from '../reusable-components/SectionWrapper';
 import { Breed } from '../types/Breed';
 import { TypeOfPet, StringTypeOfPet } from '../types/TypeOfPet';
@@ -64,12 +64,12 @@ const PetType = ({
             <Question>Your pet is a?</Question>
             <SectionWrapper>
                 <ButtonWrapper>
-                    <Button onClick={() => handleClick(0)}>
+                    <PrimaryButton onClick={() => handleClick(0)}>
                         Dog
-                    </Button>
-                    <Button onClick={() => handleClick(1)}>
+                    </PrimaryButton>
+                    <PrimaryButton onClick={() => handleClick(1)}>
                         Cat
-                    </Button>
+                    </PrimaryButton>
                 </ButtonWrapper>
             </SectionWrapper>
         </div>

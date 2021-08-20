@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Header from './components/Header';
 import PetType from './components/PetType';
 import BreedSearch from './components/BreedSearch';
+import ScrollButton from './components/ScrollButton';
 import styled from 'styled-components';
 import { Breed } from './types/Breed';
 import { StringTypeOfPet } from './types/TypeOfPet';
@@ -35,6 +36,7 @@ function App() {
           error={error}
         />
       )}
+      <ScrollButton />
     </Background>
   );
 }
