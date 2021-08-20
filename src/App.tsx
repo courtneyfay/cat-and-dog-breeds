@@ -36,7 +36,9 @@ function App() {
           error={error}
         />
       )}
-      <ScrollButton />
+      <ScrollButton
+        petType={petType}
+      />
     </Background>
   );
 }
