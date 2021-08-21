@@ -7,14 +7,17 @@ import styled from 'styled-components';
 import { Breed } from './types/Breed';
 import { StringTypeOfPet } from './types/TypeOfPet';
 
-const Background = styled.div`
+const PageBackground = styled.div`
   background: #064574;
   width: 100vw;
-  min-height: 200vh;
+  min-height: 100vh;
+`;
+
+const Container = styled(PageBackground)`
   overflow: hidden;
 `;
 
-const SecondPage = styled.div`
+const SecondPage = styled(PageBackground)`
   position: absolute;
   top: 100vh;
   width: 100%;
@@ -29,7 +32,7 @@ function App() {
   const [breedData, setBreedData] = useState<Breed[] | undefined>();
 
   return (
-    <Background>
+    <Container>
       <Header />
       <PetType
         setBreedData={setBreedData}
@@ -41,17 +44,17 @@ function App() {
         petType={petType}
         secondPageRef={secondPageRef}
       />
-      <SecondPage ref={secondPageRef}>
-        {petType && (
+      {petType && (
+        <SecondPage ref={secondPageRef}>
           <BreedSearch
             breedData={breedData}
             petType={petType}
             isLoading={isLoading}
             error={error}
           />
-        )}
-      </SecondPage>
-    </Background>
+        </SecondPage>
+      )}
+    </Container>
   );
 }
 
