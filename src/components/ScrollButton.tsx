@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { RefObject, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { CircleButton } from '../reusable-components/Button';
 import { StringTypeOfPet } from '../types/TypeOfPet';
@@ -31,12 +31,24 @@ const Alert = styled.div`
 
 interface Props {
     petType?: StringTypeOfPet 
+    secondPageRef: RefObject<HTMLDivElement>
 }
 
 const ScrollButton = ({
     petType,
+    secondPageRef,
 }: Props) => {
     const [alert, setAlert] = useState<string | undefined>();
+
+    const scrollToRef = (ref: RefObject<HTMLDivElement>) => {
+        if (ref && ref.current) {
+            const newPosition = ref.current.offsetTop; 
+            window.scrollTo({
+                top: newPosition,
+                behavior: 'smooth',
+            });
+        }
+    };
 
     useEffect(() => {
         if (petType) {
@@ -48,7 +60,7 @@ const ScrollButton = ({
         if (!petType) {
             setAlert('Please choose a Dog or Cat pet type');
         } else {
-            console.log('hitting else - do the autoscroll thing here')
+            scrollToRef(secondPageRef)
         }
     };
 

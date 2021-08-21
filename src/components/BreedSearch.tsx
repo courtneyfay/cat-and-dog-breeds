@@ -20,7 +20,7 @@ const BreedSearch = ({
     }: Props) => {
     return (
         <div>
-            <Question>Your pet's breed is?</Question>
+            <Question>{`Your ${petType}'s breed is?`}</Question>
             <SectionWrapper>
                 <BreedDropdown
                     breedData={breedData}

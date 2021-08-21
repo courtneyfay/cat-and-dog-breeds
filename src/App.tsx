@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { createRef, useState } from 'react';
 import Header from './components/Header';
 import PetType from './components/PetType';
 import BreedSearch from './components/BreedSearch';
@@ -10,10 +10,19 @@ import { StringTypeOfPet } from './types/TypeOfPet';
 const Background = styled.div`
   background: #064574;
   width: 100vw;
-  min-height: 100vh;
+  min-height: 200vh;
+  overflow: hidden;
+`;
+
+const SecondPage = styled.div`
+  position: absolute;
+  top: 100vh;
+  width: 100%;
+  height: 100vh;
 `;
 
 function App() {
+  const secondPageRef = createRef<HTMLDivElement>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | undefined>();
   const [petType, setPetType] = useState<StringTypeOfPet | undefined>();
@@ -28,17 +37,20 @@ function App() {
         setIsLoading={setIsLoading}
         setError={setError}
       />
-      {petType && (
-        <BreedSearch
-          breedData={breedData}
-          petType={petType}
-          isLoading={isLoading}
-          error={error}
-        />
-      )}
       <ScrollButton
         petType={petType}
+        secondPageRef={secondPageRef}
       />
+      <SecondPage ref={secondPageRef}>
+        {petType && (
+          <BreedSearch
+            breedData={breedData}
+            petType={petType}
+            isLoading={isLoading}
+            error={error}
+          />
+        )}
+      </SecondPage>
     </Background>
   );
 }
