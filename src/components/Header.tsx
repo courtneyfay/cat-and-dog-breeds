@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Logo from '../Logo.svg';
+import logo from '../logo.svg';
 
 const Wrapper = styled.header`
     background-color: white;
@@ -11,7 +11,7 @@ const Wrapper = styled.header`
 const Header = () => {
     return (
         <Wrapper>
-            <img src={Logo} alt="logo" />
+            <img src={logo} alt="logo" />
         </Wrapper>
     )
 }
